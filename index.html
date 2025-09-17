@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AyurVeda Clinic - Ancient Wisdom for Modern Wellness</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landingPage" class="screen active">
+        <!-- Background Animation Particles -->
+        <div class="particles"></div>
+        
+        <!-- Login Options -->
+        <div class="login-options">
+            <button class="login-btn patient-btn" onclick="showAuth('patient')">Login as Patient</button>
+            <button class="login-btn doctor-btn" onclick="showAuth('doctor')">Login as Doctor</button>
+            <button class="login-btn admin-btn" onclick="showAuth('admin')">Admin Panel</button>
+        </div>
+
+        <!-- Main Content -->
+        <div class="landing-content">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-text">
+                    <h1 class="sanskrit-title">आयुर्वेद</h1>
+                    <h2 class="clinic-title">AyurVeda Clinic</h2>
+                    <p class="clinic-subtitle">Ancient Wisdom for Modern Wellness</p>
+                    
+                    <div class="description">
+                        <p>Experience the timeless healing traditions of Ayurveda. Our certified practitioners combine ancient wisdom with modern care to restore your natural balance and vitality.</p>
+                        
+                        <div class="features-tags">
+                            <span class="feature-tag">🌿 Natural Healing</span>
+                            <span class="feature-tag">🧘 Mind-Body Balance</span>
+                            <span class="feature-tag">💫 Holistic Wellness</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Carousel -->
+            <div class="carousel-section">
+                <div class="carousel-container">
+                    <div class="carousel-slide active" data-slide="0">
+                        <img src="https://images.unsplash.com/photo-1705083649602-03c5fbae2e89?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxheXVydmVkYSUyMGhlcmJzJTIwbWVkaWNpbmUlMjB0cmFkaXRpb25hbHxlbnwxfHx8fDE3NTgxMDQ3NDR8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Ancient Wisdom">
+                        <div class="slide-content">
+                            <h3>Ancient Wisdom</h3>
+                            <p>Traditional Ayurvedic Healing</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide" data-slide="1">
+                        <img src="https://images.unsplash.com/photo-1724833190236-0c25b6c94e90?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWRpdGF0aW9uJTIweW9nYSUyMHNwaXJpdHVhbCUyMGhlYWxpbmd8ZW58MXx8fHwxNzU4MTA0NzQ1fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Mind & Body">
+                        <div class="slide-content">
+                            <h3>Mind & Body</h3>
+                            <p>Holistic Wellness Approach</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide" data-slide="2">
+                        <img src="https://images.unsplash.com/photo-1539207107274-c576d0d5b375?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxob2xpc3RpYyUyMHdlbGxuZXNzJTIwbmF0dXJhbCUyMG1lZGljaW5lfGVufDF8fHx8MTc1ODEwNDc0NXww&ixlib=rb-4.1.0&q=80&w=1080" alt="Natural Healing">
+                        <div class="slide-content">
+                            <h3>Natural Healing</h3>
+                            <p>Pure & Organic Medicine</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide Indicators -->
+                    <div class="slide-indicators">
+                        <button class="indicator active" onclick="goToSlide(0)"></button>
+                        <button class="indicator" onclick="goToSlide(1)"></button>
+                        <button class="indicator" onclick="goToSlide(2)"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Cards -->
+        <div class="features-cards">
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <p>Easy Booking</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👨‍⚕️</div>
+                <p>Expert Doctors</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌱</div>
+                <p>Natural Treatment</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Authentication Page -->
+    <div id="authPage" class="screen">
+        <div class="auth-background"></div>
+        <div class="auth-container">
+            <button class="back-btn" onclick="showLanding()">← Back to Home</button>
+            
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h2 id="authTitle">🌿 Patient Portal</h2>
+                    <p id="authSubtitle">Book your Ayurvedic consultation</p>
+                </div>
+                
+                <form id="authForm" class="auth-form">
+                    <div id="nameField" class="field-group" style="display: none;">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your full name">
+                    </div>
+
+                    <div class="field-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div id="phoneField" class="field-group" style="display: none;">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="Enter your phone number">
+                    </div>
+
+                    <div id="specializationField" class="field-group" style="display: none;">
+                        <label for="specialization">Specialization</label>
+                        <input type="text" id="specialization" placeholder="e.g., Panchakarma, Rasayana">
+                    </div>
+
+                    <div id="licenseField" class="field-group" style="display: none;">
+                        <label for="license">License Number</label>
+                        <input type="text" id="license" placeholder="Medical license number">
+                    </div>
+
+                    <div class="field-group">
+                        <label for="password">Password</label>
+                        <div class="password-field">
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                            <button type="button" class="toggle-password" onclick="togglePassword()">👁️</button>
+                        </div>
+                    </div>
+
+                    <div id="confirmPasswordField" class="field-group" style="display: none;">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm your password">
+                    </div>
+
+                    <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+                    <button type="submit" id="authSubmitBtn" class="auth-submit-btn">Login</button>
+
+                    <div id="authToggle" class="auth-toggle">
+                        <button type="button" onclick="toggleAuthMode()">Don't have an account? Sign up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 2FA Modal -->
+        <div id="twoFAModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h3>🛡️ Two-Factor Authentication</h3>
+                <p>Enter the 6-digit code sent to your device</p>
+                <input type="text" id="otpCode" placeholder="Enter OTP (use 123456)" maxlength="6" class="otp-input">
+                <div id="otpError" class="error-message" style="display: none;"></div>
+                <div class="modal-actions">
+                    <button onclick="closeTwoFA()">Back</button>
+                    <button onclick="verifyOTP()" class="primary">Verify</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Patient Dashboard -->
+    <div id="patientDashboard" class="screen dashboard">
+        <header class="dashboard-header patient-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1>🌿 AyurVeda Clinic</h1>
+                    <span class="user-badge patient-badge">Patient Portal</span>
+                </div>
+                <div class="header-right">
+                    <button class="help-btn" onclick="toggleChat()">💬 Help Chat</button>
+                    <div class="user-info">
+                        <div class="avatar">P</div>
+                        <div class="user-details">
+                            <span class="user-name">Patient User</span>
+                            <span class="user-email">patient@email.com</span>
+                        </div>
+                    </div>
+                    <button class="logout-btn" onclick="logout()">🚪</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-content">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('patient', 'book')">📅 Book Appointment</button>
+                <button class="tab-btn" onclick="showTab('patient', 'appointments')">📋 My Appointments</button>
+                <button class="tab-btn" onclick="showTab('patient', 'profile')">👤 Profile</button>
+            </div>
+
+            <div id="patient-book" class="tab-content active">
+                <div class="booking-grid">
+                    <div class="booking-form-card">
+                        <h3>📅 Book New Appointment</h3>
+                        <form id="bookingForm" class="booking-form">
+                            <div class="field-group">
+                                <label>Select Doctor</label>
+                                <select id="doctorSelect" required>
+                                    <option value="">Choose a doctor</option>
+                                    <option value="1">Dr. Priya Sharma - Panchakarma Specialist</option>
+                                    <option value="2">Dr. Rajesh Kumar - Rasayana Therapy</option>
+                                    <option value="4">Dr. Vikram Singh - Marma Therapy</option>
+                                </select>
+                            </div>
+
+                            <div class="field-group">
+                                <label>Appointment Type</label>
+                                <select id="appointmentType" required>
+                                    <option value="consultation">Initial Consultation</option>
+                                    <option value="follow-up">Follow-up</option>
+                                    <option value="panchakarma">Panchakarma Treatment</option>
+                                    <option value="therapy">Therapy Session</option>
+                                </select>
+                            </div>
+
+                            <div class="field-group">
+                                <label>Preferred Date</label>
+                                <input type="date" id="appointmentDate" required>
+                            </div>
+
+                            <div class="field-group">
+                                <label>Preferred Time</label>
+                                <select id="appointmentTime" required>
+                                    <option value="">Select time</option>
+                                    <option value="09:00">9:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="14:00">2:00 PM</option>
+                                    <option value="15:00">3:00 PM</option>
+                                    <option value="16:00">4:00 PM</option>
+                                    <option value="17:00">5:00 PM</option>
+                                </select>
+                            </div>
+
+                            <div class="field-group">
+                                <label>Symptoms & Concerns</label>
+                                <textarea id="symptoms" placeholder="Describe your symptoms and health concerns..." rows="4" required></textarea>
+                            </div>
+
+                            <button type="submit" class="book-btn">Book Appointment</button>
+                        </form>
+                    </div>
+
+                    <div class="doctors-card">
+                        <h3>Available Doctors</h3>
+                        <div class="doctors-list">
+                            <div class="doctor-item available">
+                                <div class="doctor-info">
+                                    <h4>Dr. Priya Sharma</h4>
+                                    <p>Panchakarma Specialist</p>
+                                </div>
+                                <span class="status-badge available">Available</span>
+                            </div>
+                            <div class="doctor-item available">
+                                <div class="doctor-info">
+                                    <h4>Dr. Rajesh Kumar</h4>
+                                    <p>Rasayana Therapy</p>
+                                </div>
+                                <span class="status-badge available">Available</span>
+                            </div>
+                            <div class="doctor-item unavailable">
+                                <div class="doctor-info">
+                                    <h4>Dr. Anita Patel</h4>
+                                    <p>Ayurvedic Nutrition</p>
+                                </div>
+                                <span class="status-badge unavailable">Busy</span>
+                            </div>
+                            <div class="doctor-item available">
+                                <div class="doctor-info">
+                                    <h4>Dr. Vikram Singh</h4>
+                                    <p>Marma Therapy</p>
+                                </div>
+                                <span class="status-badge available">Available</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="patient-appointments" class="tab-content">
+                <div class="appointments-card">
+                    <h3>My Appointments</h3>
+                    <div class="appointments-list">
+                        <div class="appointment-item">
+                            <div class="appointment-info">
+                                <h4>Dr. Priya Sharma</h4>
+                                <p>Panchakarma Specialist</p>
+                                <div class="appointment-details">
+                                    <span>📅 Jan 20, 2025</span>
+                                    <span>🕐 10:00 AM</span>
+                                </div>
+                                <p><strong>Symptoms:</strong> Digestive issues, fatigue</p>
+                            </div>
+                            <span class="status-badge confirmed">Confirmed</span>
+                        </div>
+                        <div class="appointment-item">
+                            <div class="appointment-info">
+                                <h4>Dr. Rajesh Kumar</h4>
+                                <p>Rasayana Therapy</p>
+                                <div class="appointment-details">
+                                    <span>📅 Jan 15, 2025</span>
+                                    <span>🕐 2:00 PM</span>
+                                </div>
+                                <p><strong>Symptoms:</strong> Stress, anxiety</p>
+                            </div>
+                            <span class="status-badge completed">Completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="patient-profile" class="tab-content">
+                <div class="profile-card">
+                    <h3>Profile Information</h3>
+                    <div class="profile-form">
+                        <div class="profile-header">
+                            <div class="avatar large">P</div>
+                            <div>
+                                <h3>Patient User</h3>
+                                <p>Patient</p>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-grid">
+                            <div class="field-group">
+                                <label>Full Name</label>
+                                <input type="text" value="Patient User" readonly>
+                            </div>
+                            <div class="field-group">
+                                <label>Email</label>
+                                <input type="email" value="patient@email.com" readonly>
+                            </div>
+                            <div class="field-group">
+                                <label>Phone</label>
+                                <input type="tel" value="+91 98765 43210">
+                            </div>
+                            <div class="field-group">
+                                <label>Date of Birth</label>
+                                <input type="date">
+                            </div>
+                            <div class="field-group">
+                                <label>Gender</label>
+                                <select>
+                                    <option>Select gender</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="field-group">
+                                <label>Blood Group</label>
+                                <select>
+                                    <option>Select blood group</option>
+                                    <option>A+</option>
+                                    <option>A-</option>
+                                    <option>B+</option>
+                                    <option>B-</option>
+                                    <option>AB+</option>
+                                    <option>AB-</option>
+                                    <option>O+</option>
+                                    <option>O-</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="field-group">
+                            <label>Medical History</label>
+                            <textarea placeholder="Any chronic conditions, allergies, or previous treatments..." rows="4"></textarea>
+                        </div>
+                        
+                        <button class="update-btn">Update Profile</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Doctor Dashboard -->
+    <div id="doctorDashboard" class="screen dashboard">
+        <header class="dashboard-header doctor-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1>🌿 AyurVeda Clinic</h1>
+                    <span class="user-badge doctor-badge">Doctor Portal</span>
+                </div>
+                <div class="header-right">
+                    <button class="help-btn" onclick="toggleChat()">💬 Support</button>
+                    <div class="user-info">
+                        <div class="avatar">D</div>
+                        <div class="user-details">
+                            <span class="user-name">Doctor User</span>
+                            <span class="user-email">Ayurvedic Specialist</span>
+                        </div>
+                    </div>
+                    <button class="logout-btn" onclick="logout()">🚪</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <p>Today's Appointments</p>
+                        <h3>3</h3>
+                    </div>
+                    <div class="stat-icon">📅</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <p>Pending Approvals</p>
+                        <h3>1</h3>
+                    </div>
+                    <div class="stat-icon">🕐</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <p>Completed Today</p>
+                        <h3>1</h3>
+                    </div>
+                    <div class="stat-icon">✅</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <p>Total Patients</p>
+                        <h3>156</h3>
+                    </div>
+                    <div class="stat-icon">👥</div>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('doctor', 'appointments')">Appointments</button>
+                <button class="tab-btn" onclick="showTab('doctor', 'schedule')">Schedule</button>
+                <button class="tab-btn" onclick="showTab('doctor', 'patients')">Patients</button>
+                <button class="tab-btn" onclick="showTab('doctor', 'settings')">Settings</button>
+            </div>
+
+            <div id="doctor-appointments" class="tab-content active">
+                <div class="appointments-card">
+                    <h3>Today's Appointments</h3>
+                    <div class="appointments-list">
+                        <div class="appointment-item pending">
+                            <div class="appointment-info">
+                                <h4>Rahul Sharma</h4>
+                                <p>rahul@email.com</p>
+                                <div class="appointment-details">
+                                    <span>🕐 10:00 AM</span>
+                                    <span>Type: consultation</span>
+                                </div>
+                                <p><strong>Symptoms:</strong> Digestive issues, chronic fatigue</p>
+                            </div>
+                            <div class="appointment-actions">
+                                <span class="status-badge pending">Pending</span>
+                                <button class="action-btn confirm" onclick="confirmAppointment(1)">✅ Confirm</button>
+                                <button class="action-btn cancel" onclick="cancelAppointment(1)">❌ Cancel</button>
+                            </div>
+                        </div>
+                        <div class="appointment-item confirmed">
+                            <div class="appointment-info">
+                                <h4>Priya Patel</h4>
+                                <p>priya@email.com</p>
+                                <div class="appointment-details">
+                                    <span>🕐 2:00 PM</span>
+                                    <span>Type: follow-up</span>
+                                </div>
+                                <p><strong>Symptoms:</strong> Stress, anxiety, insomnia</p>
+                            </div>
+                            <span class="status-badge confirmed">Confirmed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="doctor-schedule" class="tab-content">
+                <div class="schedule-card">
+                    <h3>⚙️ Manage Availability</h3>
+                    <div class="availability-list">
+                        <div class="availability-item">
+                            <div class="day-toggle">
+                                <input type="checkbox" id="monday" checked>
+                                <label for="monday">Monday</label>
+                            </div>
+                            <div class="time-inputs">
+                                <input type="time" value="09:00"> to <input type="time" value="17:00">
+                            </div>
+                        </div>
+                        <div class="availability-item">
+                            <div class="day-toggle">
+                                <input type="checkbox" id="tuesday" checked>
+                                <label for="tuesday">Tuesday</label>
+                            </div>
+                            <div class="time-inputs">
+                                <input type="time" value="09:00"> to <input type="time" value="17:00">
+                            </div>
+                        </div>
+                        <div class="availability-item">
+                            <div class="day-toggle">
+                                <input type="checkbox" id="wednesday" checked>
+                                <label for="wednesday">Wednesday</label>
+                            </div>
+                            <div class="time-inputs">
+                                <input type="time" value="09:00"> to <input type="time" value="17:00">
+                            </div>
+                        </div>
+                        <div class="availability-item">
+                            <div class="day-toggle">
+                                <input type="checkbox" id="thursday" checked>
+                                <label for="thursday">Thursday</label>
+                            </div>
+                            <div class="time-inputs">
+                                <input type="time" value="09:00"> to <input type="time" value="17:00">
+                            </div>
+                        </div>
+                        <div class="availability-item">
+                            <div class="day-toggle">
+                                <input type="checkbox" id="friday" checked>
+                                <label for="friday">Friday</label>
+                            </div>
+                            <div class="time-inputs">
+                                <input type="time" value="09:00"> to <input type="time" value="17:00">
+                            </div>
+                        </div>
+                        <div class="availability-item">
+                            <div class="day-toggle">
+                                <input type="checkbox" id="saturday">
+                                <label for="saturday">Saturday</label>
+                            </div>
+                            <div class="time-inputs">
+                                <input type="time" value="09:00"> to <input type="time" value="13:00">
+                            </div>
+                        </div>
+                        <div class="availability-item">
+                            <div class="day-toggle">
+                                <input type="checkbox" id="sunday">
+                                <label for="sunday">Sunday</label>
+                            </div>
+                            <div class="time-inputs">
+                                <input type="time" value="09:00"> to <input type="time" value="13:00">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="update-btn">Save Availability</button>
+                </div>
+            </div>
+
+            <div id="doctor-patients" class="tab-content">
+                <div class="patients-card">
+                    <h3>Patient Records</h3>
+                    <div class="patients-list">
+                        <div class="patient-item">
+                            <div class="patient-info">
+                                <h4>Rahul Sharma</h4>
+                                <p>rahul@email.com</p>
+                                <p><strong>Last Visit:</strong> Jan 10, 2025</p>
+                                <p><strong>Condition:</strong> Digestive issues, chronic fatigue</p>
+                            </div>
+                            <button class="view-btn">View Records</button>
+                        </div>
+                        <div class="patient-item">
+                            <div class="patient-info">
+                                <h4>Priya Patel</h4>
+                                <p>priya@email.com</p>
+                                <p><strong>Last Visit:</strong> Jan 08, 2025</p>
+                                <p><strong>Condition:</strong> Stress, anxiety, insomnia</p>
+                            </div>
+                            <button class="view-btn">View Records</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="doctor-settings" class="tab-content">
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3>Profile Settings</h3>
+                        <div class="settings-form">
+                            <div class="field-group">
+                                <label>Full Name</label>
+                                <input type="text" value="Doctor User">
+                            </div>
+                            <div class="field-group">
+                                <label>Specialization</label>
+                                <input type="text" value="Ayurvedic Specialist">
+                            </div>
+                            <div class="field-group">
+                                <label>License Number</label>
+                                <input type="text" placeholder="Medical license number">
+                            </div>
+                            <div class="field-group">
+                                <label>Bio</label>
+                                <textarea placeholder="Brief description about your practice..." rows="4"></textarea>
+                            </div>
+                            <button class="update-btn">Update Profile</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Consultation Settings</h3>
+                        <div class="settings-form">
+                            <div class="field-group">
+                                <label>Consultation Duration</label>
+                                <select>
+                                    <option>15 minutes</option>
+                                    <option selected>30 minutes</option>
+                                    <option>45 minutes</option>
+                                    <option>60 minutes</option>
+                                </select>
+                            </div>
+                            <div class="field-group">
+                                <label>Consultation Fee</label>
+                                <input type="text" placeholder="₹ 500">
+                            </div>
+                            <div class="field-group">
+                                <label>Break Between Appointments</label>
+                                <select>
+                                    <option>No break</option>
+                                    <option selected>15 minutes</option>
+                                    <option>30 minutes</option>
+                                </select>
+                            </div>
+                            <button class="update-btn">Save Settings</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="screen dashboard">
+        <header class="dashboard-header admin-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1>🌿 AyurVeda Clinic</h1>
+                    <span class="user-badge admin-badge">Admin Panel</span>
+                </div>
+                <div class="header-right">
+                    <button class="help-btn" onclick="toggleChat()">💬 Support</button>
+                    <div class="user-info">
+                        <div class="avatar">A</div>
+                        <div class="user-details">
+                            <span class="user-name">Administrator</span>
+                            <span class="user-email">System Admin</span>
+                        </div>
+                    </div>
+                    <button class="logout-btn" onclick="logout()">🚪</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <p>Total Revenue</p>
+                        <h3>₹45,000</h3>
+                        <small class="growth">📈 +12.5% this month</small>
+                    </div>
+                    <div class="stat-icon">💰</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <p>Active Doctors</p>
+                        <h3>2</h3>
+                    </div>
+                    <div class="stat-icon">👨‍⚕️</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <p>Total Patients</p>
+                        <h3>3</h3>
+                    </div>
+                    <div class="stat-icon">👥</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <p>Pending Approvals</p>
+                        <h3>1</h3>
+                    </div>
+                    <div class="stat-icon">📅</div>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('admin', 'appointments')">Appointments</button>
+                <button class="tab-btn" onclick="showTab('admin', 'doctors')">Doctors</button>
+                <button class="tab-btn" onclick="showTab('admin', 'patients')">Patients</button>
+                <button class="tab-btn" onclick="showTab('admin', 'analytics')">Analytics</button>
+                <button class="tab-btn" onclick="showTab('admin', 'settings')">Settings</button>
+            </div>
+
+            <div id="admin-appointments" class="tab-content active">
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h3>All Appointments</h3>
+                        <button class="add-btn">➕ New Appointment</button>
+                    </div>
+                    <div class="admin-table">
+                        <div class="table-header">
+                            <div>Patient</div>
+                            <div>Doctor</div>
+                            <div>Date & Time</div>
+                            <div>Type</div>
+                            <div>Status</div>
+                            <div>Actions</div>
+                        </div>
+                        <div class="table-row">
+                            <div>Rahul Sharma</div>
+                            <div>Dr. Priya Sharma</div>
+                            <div>Jan 17, 2025 at 10:00 AM</div>
+                            <div>Consultation</div>
+                            <div><span class="status-badge pending">Pending</span></div>
+                            <div class="table-actions">
+                                <button class="action-btn confirm">✅</button>
+                                <button class="action-btn cancel">❌</button>
+                                <button class="action-btn edit">✏️</button>
+                            </div>
+                        </div>
+                        <div class="table-row">
+                            <div>Priya Patel</div>
+                            <div>Dr. Rajesh Kumar</div>
+                            <div>Jan 17, 2025 at 2:00 PM</div>
+                            <div>Follow-up</div>
+                            <div><span class="status-badge confirmed">Confirmed</span></div>
+                            <div class="table-actions">
+                                <button class="action-btn edit">✏️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="admin-doctors" class="tab-content">
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h3>Doctor Management</h3>
+                        <button class="add-btn">➕ Add Doctor</button>
+                    </div>
+                    <div class="admin-table">
+                        <div class="table-header">
+                            <div>Doctor</div>
+                            <div>Specialization</div>
+                            <div>Patients</div>
+                            <div>Join Date</div>
+                            <div>Status</div>
+                            <div>Actions</div>
+                        </div>
+                        <div class="table-row">
+                            <div>
+                                <div>Dr. Priya Sharma</div>
+                                <small>priya@clinic.com</small>
+                            </div>
+                            <div>Panchakarma Specialist</div>
+                            <div>45</div>
+                            <div>Jan 15, 2024</div>
+                            <div><span class="status-badge active">Active</span></div>
+                            <div class="table-actions">
+                                <button class="action-btn edit">⚙️</button>
+                                <button class="action-btn delete">🗑️</button>
+                            </div>
+                        </div>
+                        <div class="table-row">
+                            <div>
+                                <div>Dr. Rajesh Kumar</div>
+                                <small>rajesh@clinic.com</small>
+                            </div>
+                            <div>Rasayana Therapy</div>
+                            <div>38</div>
+                            <div>Feb 20, 2024</div>
+                            <div><span class="status-badge active">Active</span></div>
+                            <div class="table-actions">
+                                <button class="action-btn edit">⚙️</button>
+                                <button class="action-btn delete">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="admin-patients" class="tab-content">
+                <div class="admin-card">
+                    <h3>Patient Management</h3>
+                    <div class="admin-table">
+                        <div class="table-header">
+                            <div>Patient</div>
+                            <div>Contact</div>
+                            <div>Last Visit</div>
+                            <div>Total Visits</div>
+                            <div>Actions</div>
+                        </div>
+                        <div class="table-row">
+                            <div>
+                                <div>Rahul Sharma</div>
+                                <small>rahul@email.com</small>
+                            </div>
+                            <div>+91 98765 43210</div>
+                            <div>Jan 10, 2025</div>
+                            <div>5</div>
+                            <div class="table-actions">
+                                <button class="action-btn edit">✏️</button>
+                                <button class="action-btn delete">🗑️</button>
+                            </div>
+                        </div>
+                        <div class="table-row">
+                            <div>
+                                <div>Priya Patel</div>
+                                <small>priya@email.com</small>
+                            </div>
+                            <div>+91 87654 32109</div>
+                            <div>Jan 08, 2025</div>
+                            <div>3</div>
+                            <div class="table-actions">
+                                <button class="action-btn edit">✏️</button>
+                                <button class="action-btn delete">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="admin-analytics" class="tab-content">
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Monthly Revenue</h3>
+                        <div class="analytics-content">
+                            <div class="revenue-item">
+                                <span>January 2025</span>
+                                <span>₹45,000</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%;"></div>
+                            </div>
+                            
+                            <div class="revenue-item">
+                                <span>December 2024</span>
+                                <span>₹40,000</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 67%;"></div>
+                            </div>
+                            
+                            <div class="revenue-item">
+                                <span>November 2024</span>
+                                <span>₹38,000</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 63%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Appointment Types</h3>
+                        <div class="analytics-content">
+                            <div class="type-item">
+                                <span>Consultations</span>
+                                <span class="percentage">65%</span>
+                            </div>
+                            <div class="type-item">
+                                <span>Follow-ups</span>
+                                <span class="percentage">25%</span>
+                            </div>
+                            <div class="type-item">
+                                <span>Therapy Sessions</span>
+                                <span class="percentage">10%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="admin-settings" class="tab-content">
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3>Clinic Settings</h3>
+                        <div class="settings-form">
+                            <div class="field-group">
+                                <label>Clinic Name</label>
+                                <input type="text" value="AyurVeda Clinic">
+                            </div>
+                            <div class="field-group">
+                                <label>Contact Email</label>
+                                <input type="email" value="admin@ayurvedaclinic.com">
+                            </div>
+                            <div class="field-group">
+                                <label>Phone Number</label>
+                                <input type="tel" value="+91 98765 43210">
+                            </div>
+                            <div class="field-group">
+                                <label>Address</label>
+                                <input type="text" value="123 Wellness Street, Health City">
+                            </div>
+                            <button class="update-btn">Save Settings</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>System Preferences</h3>
+                        <div class="settings-form">
+                            <div class="toggle-setting">
+                                <label>Email Notifications</label>
+                                <input type="checkbox" checked>
+                            </div>
+                            <div class="toggle-setting">
+                                <label>SMS Reminders</label>
+                                <input type="checkbox" checked>
+                            </div>
+                            <div class="toggle-setting">
+                                <label>Auto-confirm Appointments</label>
+                                <input type="checkbox">
+                            </div>
+                            <div class="field-group">
+                                <label>Default Appointment Duration</label>
+                                <select>
+                                    <option>15 minutes</option>
+                                    <option selected>30 minutes</option>
+                                    <option>45 minutes</option>
+                                    <option>60 minutes</option>
+                                </select>
+                            </div>
+                            <button class="update-btn">Save Preferences</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot -->
+    <div id="chatbot" class="chatbot">
+        <div id="chatToggle" class="chat-toggle" onclick="toggleChat()">
+            💬
+        </div>
+        <div id="chatWindow" class="chat-window" style="display: none;">
+            <div class="chat-header">
+                <div class="chat-avatar">🤖</div>
+                <div class="chat-info">
+                    <h4>AyurBot</h4>
+                    <span>Online now</span>
+                </div>
+                <button class="chat-close" onclick="toggleChat()">❌</button>
+            </div>
+            <div id="chatMessages" class="chat-messages">
+                <div class="message bot-message">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                        Namaste! I'm AyurBot, your Ayurveda assistant. How can I help you today?
+                    </div>
+                </div>
+            </div>
+            <div id="quickQuestions" class="quick-questions">
+                <p>Quick questions:</p>
+                <div class="question-buttons">
+                    <button onclick="sendQuickQuestion('How to book appointment?')">How to book appointment?</button>
+                    <button onclick="sendQuickQuestion('What is Ayurveda?')">What is Ayurveda?</button>
+                    <button onclick="sendQuickQuestion('Services offered?')">Services offered?</button>
+                    <button onclick="sendQuickQuestion('Contact information')">Contact information</button>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInputField" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+                <button onclick="sendMessage()">📤</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
